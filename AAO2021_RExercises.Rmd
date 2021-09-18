@@ -1,0 +1,111 @@
+---
+title: "AAO2021_RExercises"
+author: "Naweed Chowdhury, Rijul Kshirsagar, Jonathan Liang"
+date: "10/6/2021"
+output:   
+  pdf_document: default
+  html_document: default
+---
+
+*R for Data Analysis:  Useful Tools for Otolaryngologists and Researchers*
+
+ \vspace{10pt}
+ 
+**Instructions:**
+
+Download the 'CRSData' dataset from the the shared google drive folder (https://drive.google.com/drive/folders/1pe0im70ZLKa2wr_Jjp0McJmFmUEq31JD?usp=sharing).  *Note this is in csv format.*  Add this file into your working directory for R.
+
+ \vspace{10pt}
+
+
+**EXERCISES:**
+
+ \vspace{10pt}
+
+***PART A:  R BASICS***
+
+ \vspace{10pt}
+
+1.  Install the 'tidyverse' pacakge.  After you install, load the 'tidyverse' library. 
+```{r, Q1, include = FALSE}
+#Insert code here
+install.packages("tidyverse") #this may take a few seconds to install all the tidyverse packages
+library("tidyverse")
+```
+
+2. Check your working directory.
+```{r, Q2, include = FALSE}
+#Insert code here
+getwd()
+
+#You can set the working directory by going to Session --> Set Working Directory --> Choose Directory.
+```
+
+3. Make sure the 'CRSData.csv' is within your working directory folder.  Load the 'CRSData.csv' file into your R environment.  Name it 'CRS'.
+```{r, Q3}
+#Insert code here
+CRS <- read.csv("CRSData.csv")
+
+#You can also click on 'CRS' in the global environment (top right pane) and it will open in your source pane for you to view the dataset more easily.
+```
+
+4. Check the structure of the CRS data. 
+```{r, Q4}
+#Insert code here
+str(CRS)
+
+#Note some are 'chr' (characters) - categorical variables, while others are 'num' (numeric) or 'int' (integer) - continuous variables. 
+```
+
+5. Return the first few lines/observations in the CRS data.
+```{r, Q5}
+#Insert code here
+head(CRS)
+```
+
+6. Check the column names in the CRS data.
+```{r, Q6}
+#Insert code here
+colnames(CRS)
+```
+
+7. Provide a summary of the 'Phenotype' (i.e. how many patients have each phenotype?)
+```{r, Q7}
+#Insert code here
+table(CRS$Phenotype)
+```
+
+8. Provide a summary of the 'Phenotype' stratified by 'Asthma' status (No, Yes).
+```{r, Q8}
+#Insert code here
+table(CRS$Phenotype, CRS$Asthma)
+```
+
+9. Provide a summary of the 'PreSNOT' and 'PostSNOT' score (i.e. what is the min/max/mean/median of the PreSNOT and PostSNOT scores)
+```{r, Q9}
+#Insert code here
+summary(CRS$PreSNOT)
+summary(CRS$PostSNOT)
+```
+
+10. Calculate the difference in SNOT scores (PostSNOT - PreSNOT) and call this new variable 'deltaSNOT'.  Provide a summary of 'deltaSNOT'.
+```{r, Q10}
+#Insert code here
+CRS$deltaSNOT <- CRS$PostSNOT - CRS$PreSNOT
+summary(CRS$deltaSNOT)
+```
+
+ \vspace{10pt}
+ 
+***PART B:  VISUALIZATIONS***
+
+ \vspace{10pt}
+
+
+
+ \vspace{10pt}
+ 
+ ***PART C:  STATISTICAL ANALYSIS***
+
+ \vspace{10pt}
+
